@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Juego educativo para aprender las tablas de multiplicar del 1 al 10.">
   <meta name="theme-color" content="#6c5ce7">
+  <meta name="description" content="Juego educativo para aprender las tablas de multiplicar del 1 al 10.">
   <title>Multiplica Aventura</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦊%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,16 +13,12 @@
   <div class="app">
     <header>
       <div class="brand">
-        <div class="logo">✦</div>
-        <div>
-          <h1>Multiplica Aventura</h1>
-          <small>¡Tu misión: dominar las tablas del 1 al 10!</small>
-        </div>
+        <div class="logo" aria-hidden="true">✦</div>
+        <div><h1>Multiplica Aventura</h1><small>¡Tu misión: dominar las tablas!</small></div>
       </div>
       <div class="stats">
-        <button id="soundToggle" class="sound-toggle" type="button" aria-pressed="true" title="Activar o desactivar sonidos">🔊 <span>Sonido</span></button>
-        <span id="streak">🔥 0</span>
-        <span id="stars">⭐ 0</span>
+        <button id="soundToggle" class="sound-toggle" type="button" aria-label="Desactivar sonidos" title="Activar o desactivar sonidos">🔊</button>
+        <span id="streak">🔥 0</span><span id="stars">⭐ 0</span>
       </div>
     </header>
 
@@ -31,38 +26,34 @@
       <section id="home" class="screen active">
         <div class="hero">
           <div class="herotxt">
-            <div class="tag">MISIÓN DE 3 DÍAS 🚀</div>
+            <div id="missionTag" class="tag">ELEGÍ TU MISIÓN 🚀</div>
             <h2>¡El poder de<br>multiplicar!</h2>
             <p>Superá desafíos, ganá estrellas y entrená las cuentas que más te cuestan.</p>
             <button class="btn primary" id="start" type="button">¡Vamos a jugar! <b>➜</b></button>
           </div>
-          <div class="fox" aria-label="Zorrito aventurero">🦊<div class="sparkles">✨ ✦ ✨</div></div>
+          <div class="fox" aria-label="Zorrito">🦊<div class="sparkles">✨ ✦ ✨</div></div>
         </div>
 
-        <div class="dayrow" aria-label="Etapas de la misión">
-          <button class="day active" data-day="1" type="button">DÍA 1 <small>Tablas 1–4</small></button>
-          <button class="day" data-day="2" type="button">DÍA 2 <small>Tablas 5–7</small></button>
-          <button class="day" data-day="3" type="button">DÍA 3 <small>Tablas 8–10</small></button>
+        <div id="planSummary" class="plan-summary" hidden>
+          <div><span aria-hidden="true">🗓️</span> <strong id="planSummaryText"></strong></div>
+          <button id="changePlan" class="text-button" type="button">Cambiar plan</button>
         </div>
+        <div id="dayrow" class="dayrow" aria-label="Días del plan"></div>
 
         <div class="heading"><h3>Mapa de aventura</h3><span id="progressText">0/10 niveles</span></div>
-        <div class="progress" aria-label="Progreso total"><div id="progressBar"></div></div>
+        <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
         <div id="levels" class="levels"></div>
 
         <div class="bottomtools">
           <button id="mistakesBtn" class="btn secondary" type="button">🧠 Entrenar cuentas difíciles <span id="mistakeCount"></span></button>
           <button id="mixBtn" class="btn secondary" type="button">🎲 Desafío de repaso</button>
         </div>
-        <div class="tip">🌈 <b>¡No pasa nada si te equivocás!</b> Cada intento te hace más fuerte. El zorrito te acompaña.</div>
+        <div class="tip">🌈 <b>¡No pasa nada si te equivocás!</b> Al terminar verás cada cuenta, tu respuesta y la solución correcta.</div>
       </section>
 
       <section id="game" class="screen">
-        <div class="gamebar">
-          <button id="back" class="back" type="button">← Mapa</button>
-          <b id="mode">DESAFÍO</b>
-          <b id="count">1/10</b>
-        </div>
-        <div class="progress" aria-label="Progreso del desafío"><div id="qbar"></div></div>
+        <div class="gamebar"><button id="back" class="back" type="button">← Mapa</button><b id="mode">DESAFÍO</b><b id="count">1/10</b></div>
+        <div class="progress" aria-hidden="true"><div id="qbar"></div></div>
         <div id="quizCard" class="quiz">
           <div id="mascot" class="mascot" aria-hidden="true">🦊</div>
           <div id="question" class="question">4 × 5 = ?</div>
@@ -76,21 +67,63 @@
       </section>
 
       <section id="result" class="screen">
-        <div id="resultCard" class="result">
-          <div id="resultIcon" class="resulticon">🎉</div>
+        <div class="result">
+          <div id="resultIcon" class="resulticon" aria-hidden="true">🎉</div>
           <h2 id="resultTitle">¡Nivel superado!</h2>
           <p id="resultText"></p>
           <div class="resultboxes">
             <div><strong id="score">0/10</strong><small>Correctas</small></div>
             <div><strong id="award">0 ⭐</strong><small>Ganadas</small></div>
           </div>
+
+          <div class="review-heading">
+            <div><h3>Resultado de cada operación</h3><p>Así podés ver qué salió bien y qué conviene repasar.</p></div>
+            <div class="legend"><span class="legend-ok">✓ Correcta</span><span class="legend-bad">✗ A repasar</span></div>
+          </div>
+          <div id="reviewList" class="review-list"></div>
           <button id="resultContinue" class="btn primary" type="button">Continuar</button>
         </div>
       </section>
     </main>
-
     <footer>El progreso se guarda en este dispositivo · ¡Aprendé a tu ritmo!</footer>
   </div>
+
+  <div id="planModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="planTitle" hidden>
+    <div class="modal-card">
+      <button id="closePlan" class="modal-close" type="button" aria-label="Cerrar">×</button>
+      <div class="modal-fox" aria-hidden="true">🦊</div>
+      <p class="eyebrow">ANTES DE EMPEZAR</p>
+      <h2 id="planTitle">¿Cómo querés hacer el desafío?</h2>
+      <p class="modal-intro">Podés aprender las tablas del 1 al 10 de una vez o repartirlas en la cantidad de días que prefieras.</p>
+
+      <div class="plan-options">
+        <label class="plan-option" id="oneOption">
+          <input type="radio" name="planType" value="one" checked>
+          <span class="option-icon">⚡</span>
+          <span><strong>Todo de una vez</strong><small>Las 10 tablas en una sola misión</small></span>
+        </label>
+        <label class="plan-option" id="daysOption">
+          <input type="radio" name="planType" value="days">
+          <span class="option-icon">🗓️</span>
+          <span><strong>Repartir en varios días</strong><small>Elegí cuántos días querés usar</small></span>
+        </label>
+      </div>
+
+      <div id="daysPicker" class="days-picker" hidden>
+        <label for="daysInput">Cantidad de días</label>
+        <div class="stepper">
+          <button id="lessDays" type="button" aria-label="Restar un día">−</button>
+          <input id="daysInput" type="number" min="2" max="10" value="3" inputmode="numeric">
+          <button id="moreDays" type="button" aria-label="Agregar un día">+</button>
+        </div>
+      </div>
+
+      <div class="plan-preview"><strong>Tu plan:</strong><div id="planPreview"></div></div>
+      <button id="savePlan" class="btn primary wide" type="button">Guardar y empezar</button>
+      <p id="planError" class="plan-error" role="alert"></p>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

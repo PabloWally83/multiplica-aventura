@@ -1,34 +1,30 @@
-# Multiplica Aventura Plus 🦊
+# Multiplica Aventura 🦊
 
-Aplicación web educativa para aprender y practicar **las tablas del 1 al 10** jugando.
+Aplicación web educativa para aprender y practicar las tablas de multiplicar del 1 al 10.
 
-## Qué incluye
+## Funciones principales
 
-- 10 niveles progresivos, uno por tabla.
-- 10 preguntas por nivel y aprobación con 8 respuestas correctas.
-- Plan visual de tres días:
-  - Día 1: tablas 1 a 4.
-  - Día 2: tablas 5 a 7.
-  - Día 3: tablas 8 a 10.
-- Repaso combinado y entrenamiento de las cuentas que más cuestan.
-- Estrellas, rachas y progreso guardado en el dispositivo.
-- Sonidos musicales sintetizados en el navegador, con botón para silenciarlos.
-- Mini fuegos artificiales al acertar y una celebración mayor al superar un nivel.
-- Animación amable y mensaje de ayuda cuando la respuesta no es correcta.
-- Diseño adaptable a computadora, tablet y celular.
-- Preferencia de movimiento reducido respetada automáticamente.
+- Antes del primer desafío permite elegir entre completar todo en una sesión o repartir las tablas entre 2 y 10 días.
+- Distribuye automáticamente las tablas de forma equilibrada entre los días elegidos.
+- Niveles progresivos con desbloqueo al alcanzar 8 respuestas correctas de 10.
+- Al terminar cada desafío muestra las 10 operaciones, la respuesta dada, la respuesta correcta y si estuvo bien o mal.
+- Repaso combinado y entrenamiento de cuentas difíciles.
+- Estrellas, rachas, sonidos, animaciones, mini fuegos artificiales y celebración de nivel.
+- Progreso y plan guardados en `localStorage`.
+- Diseño responsive y sin dependencias externas.
 
-## Abrir y probar
+## Probar localmente
 
-Podés abrir `index.html` directamente en un navegador moderno. Para simular la publicación, también podés servir la carpeta con cualquier servidor web estático.
+Abrí `index.html` en un navegador moderno. Para una prueba más fiel podés iniciar un servidor estático:
 
-## Publicar en Vercel con GitHub
+```bash
+npx serve .
+```
 
-1. Reemplazá en el repositorio los archivos `index.html`, `style.css`, `app.js` y `README.md` por estas versiones.
-2. Confirmá los cambios en la rama `main`.
-3. Vercel detectará el cambio y publicará automáticamente una nueva versión.
-4. Cuando el despliegue termine, abrí la URL y hacé una recarga completa (`Ctrl + F5`).
+## Publicar en Vercel
 
-Configuración: framework **Other**, sin comando de compilación y con el directorio raíz `.`. La aplicación no necesita backend, paquetes ni variables de entorno.
+1. Subí los cinco archivos de esta carpeta a la raíz del repositorio de GitHub.
+2. Vercel detectará el cambio en la rama principal y hará un nuevo despliegue automáticamente.
+3. No requiere build command, variables de entorno, backend ni base de datos.
 
-El progreso se guarda mediante `localStorage`. El audio se genera localmente con Web Audio API y no descarga archivos.
+La aplicación es HTML, CSS y JavaScript puro.
